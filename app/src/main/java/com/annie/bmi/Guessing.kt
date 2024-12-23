@@ -3,27 +3,31 @@ package com.annie.bmi
 import kotlin.random.Random
 
 fun main() {
-//    println(Random.nextInt(1,11))
     val secret = (1..10).random()
-    var num = 0
+    var nums = 0
     var bingo = false
-//    while ( num != secret) {
-    for(i in 1..3){
-        print("please enter a number(1-10): ")
+    for (i in 1..3){
+        println("please enter a number(1-2) 第 $i 次:")
         val input = readLine()
-        num = input?.toIntOrNull() ?: 0
-        if (num < secret){
-            println("bigger")
-        }else if(num > secret){
+        nums = input?.toIntOrNull() ?: 0
+        if ( secret < nums ){
             println("smaller")
+        }else if (secret > nums ){
+            println("bigger")
         }else {
-            println("Great! the number is $secret")
+            if(i==1){
+                println("Excellent!! the number is $secret")
+            }else if(i==2){
+                println("Great!! the number is $secret")
+            }else{
+                print("good, the number is $secret")
+            }
             bingo = true
             break
+
         }
     }
-    if(!bingo){
-        println("Failed, the secret number is $secret")
+    if (!bingo){
+        println("sorry, the number is $secret")
     }
-
 }
